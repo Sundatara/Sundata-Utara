@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profil Desa Sundata Utara</title>
+
+<meta name="description" content="Website resmi Profil Nagari Sundata Utara, Kecamatan Lubuk Sikaping. Informasi pelayanan administrasi, struktur pemerintahan, visi dan misi nagari.">
+<meta name="keywords" content="Nagari Sundata Utara, Lubuk Sikaping, Profil Nagari, Pelayanan Administrasi Nagari">
+<meta name="author" content="Pemerintah Nagari Sundata Utara">
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f4f4f4;
+    color: #333;
+}
+
+/* TOGGLE */
+.menu-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 26px;
+    background: #27ae60;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    z-index: 10000;
+}
+
+/* SIDEBAR */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -260px;
+    width: 260px;
+    height: 100%;
+    background: linear-gradient(180deg, #27ae60, #2ecc71);
+    padding-top: 70px;
+    transition: 0.4s ease;
+    z-index: 9999;
+}
+.sidebar.active { left: 0; }
+
+.sidebar h2 {
+    color: white;
+    text-align: center;
+}
+.sidebar a {
+    display: block;
+    padding: 14px 25px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+.sidebar a:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+/* HEADER */
+header {
+    background: url("IMG_2897.jpg") center/cover no-repeat;
+    color: white;
+    text-align: center;
+    padding: 3.5rem 0;
+    position: relative;
+}
+header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+}
+header * { position: relative; }
+
+.logo-header {
+    width: 100px;
+    border-radius: 6px;
+}
+
+/* CONTAINER */
+.container {
+    width: 80%;
+    margin: 25px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+}
+
+/* SECTION */
+section {
+    display: none;
+    animation: fade 0.3s ease;
+}
+section.active { display: block; }
+
+@keyframes fade {
+    from {opacity:0; transform:translateY(10px)}
+    to {opacity:1; transform:translateY(0)}
+}
+
+h2 {
+    color: #27ae60;
+    border-bottom: 3px solid #27ae60;
+    padding-bottom: 8px;
+}
+
+/* SOP LIST */
+.sop-list {
+    list-style: none;
+    padding: 0;
+}
+.sop-list li {
+    background: #f1f8e9;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-left: 5px solid #2ecc71;
+}
+
+/* SOP TABLE */
+.table-wrapper { overflow-x: auto; }
+
+.sop-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+.sop-table th {
+    background: #27ae60;
+    color: white;
+    padding: 12px;
+}
+.sop-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+/* ===== STRUKTUR PEMERINTAHAN ===== */
+.org-chart {
+    display: flex;
+    justify-content: center;
+    margin: 25px 0;
+}
+
+.org-level {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.org-box {
+    background: #fff;
+    border-radius: 16px;
+    padding: 20px;
+    width: 240px; /* diperbesar */
+    text-align: center;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+    border-top: 6px solid #27ae60;
+    transition: all 0.3s ease;
+}
+
+.org-box img {
+    width: 130px;   /* FOTO DIPERBESAR */
+    height: 130px;  /* FOTO DIPERBESAR */
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 12px;
+    border: 4px solid #27ae60;
+}
+
+.org-box h4 {
+    margin: 8px 0 5px;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.org-box p {
+    margin: 0;
+    font-size: 15px;
+    color: #666;
+}
+
+/* Pimpinan */
+.org-box.leader img {
+    width: 150px;   /* Wali Nagari lebih besar */
+    height: 150px;
+    border-color: white;
+}
+
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: white;
+    color: #777;
+}
+
+@media(max-width: 768px){
+    .org-box {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .org-box img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .org-box.leader img {
+        width: 140px;
+        height: 140px;
+    }
+}
+
+/* ===== ANIMASI VISI & MISI ===== */
+.vm-box {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: vmFadeUp 0.8s ease forwards;
+}
+
+.vm-box:nth-child(2) {
+    animation-delay: 0.15s;
+}
+.vm-box:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+@keyframes vmFadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* efek hover lembut */
+.vm-box:hover {
+    transform: translateY(-4px);
+    transition: transform 0.3s ease;
+}
+
+/* ===== GLASSMORPHISM VISI & MISI ===== */
+.vm-box {
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.4);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+
+    padding: 20px;
+    margin-top: 20px;
+
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+
+    transition: all 0.35s ease;
+}
+
+/* hover halus */
+.vm-box:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+}
+
+/* ikon lebih hidup */
+.vm-icon {
+    font-size: 42px;
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 6px 18px rgba(39,174,96,0.4);
+    flex-shrink: 0;
+}
+
+/* animasi denyut ikon */
+.vm-box:hover .vm-icon {
+    transform: rotate(-3deg) scale(1.08);
+    transition: 0.3s ease;
+}
+
+.search-sop {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 15px 0;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+.search-sop:focus {
+    outline: none;
+    border-color: #27ae60;
+    box-shadow: 0 0 8px rgba(39,174,96,0.4);
+}
+
+
+@media(max-width:768px){
+    .vm-box {
+        flex-direction: column;
+    }
+    .vm-icon {
+        margin-bottom: 8px;
+    }
+}
+
+header h1::after {
+    content:"";
+    display:block;
+    width:120px;
+    height:4px;
+    background:#2ecc71;
+    margin:12px auto;
+    border-radius:4px;
+}
+
+
+
+/* ===== GLASSMORPHISM STRUKTUR PEMERINTAHAN ===== */
+.struktur-card {
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.45);
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    padding: 25px;
+    text-align: center;
+
+    transition: all 0.35s ease;
+}
+
+/* hover halus */
+.struktur-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 20px 45px rgba(0,0,0,0.15);
+}
+
+/* FOTO DIPERBESAR */
+.struktur-card img {
+    width: 140px;          /* SEBELUMNYA 100px */
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+
+    border: 5px solid rgba(39,174,96,0.9);
+    box-shadow: 0 8px 20px rgba(39,174,96,0.4);
+
+    transition: all 0.35s ease;
+}
+
+/* animasi foto */
+.struktur-card:hover img {
+    transform: scale(1.08) rotate(-1deg);
+}
+
+/* wali nagari lebih menonjol */
+.wali-nagari {
+    background: linear-gradient(135deg, rgba(39,174,96,0.85), rgba(46,204,113,0.85));
+    color: white;
+    border: 3px solid rgba(255,255,255,0.7);
+}
+
+/* teks */
+.struktur-card h3 {
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.struktur-card p {
+    font-size: 14px;
+    opacity: 0.85;
+}
+
+/* ===== VISI MISI WRAPPER ===== */
+.vm-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 25px;
+}
+
+/* ===== CARD VISI MISI ===== */
+.vm-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    border-radius: 20px;
+    padding: 25px;
+
+    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+    border: 1px solid rgba(255,255,255,0.4);
+
+    transition: all 0.35s ease;
+}
+
+.vm-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 45px rgba(0,0,0,0.15);
+}
+
+/* ===== HEADER VISI MISI ===== */
+.vm-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.vm-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
+    color: white;
+    font-size: 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 8px 18px rgba(39,174,96,0.45);
+}
+
+.vm-header h3 {
+    margin: 0;
+    color: #27ae60;
+}
+
+/* ===== ISI ===== */
+.vm-card p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #444;
+}
+
+.vm-card ul {
+    padding-left: 18px;
+    margin: 0;
+}
+
+.vm-card ul li {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .vm-header {
+        justify-content: center;
+        text-align: center;
+        flex-direction: column;
+    }
+}
+
+.org-box:hover::after {
+    content: "Klik untuk detail";
+    font-size: 12px;
+    color: #27ae60;
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 2.2rem 1rem;
+    }
+
+    header h1 {
+        font-size: 22px;
+        letter-spacing: 1px;
+    }
+
+    header p {
+        font-size: 13px;
+        opacity: 0.9;
+    }
+
+    .logo-header {
+        width: 75px;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 220px;
+    }
+}
+
+#overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 9998;
+    display: none;
+}
+#overlay.active {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .org-chart,
+    .org-level {
+        gap: 18px;
+    }
+
+    .org-box {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .org-box h4 {
+        font-size: 16px;
+    }
+
+    .org-box p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .vm-card {
+        padding: 18px;
+    }
+
+    .vm-card p,
+    .vm-card li {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+}
+
+@media (max-width: 768px) {
+    .sop-table th,
+    .sop-table td {
+        font-size: 13px;
+        padding: 8px;
+    }
+
+    .search-sop {
+        font-size: 14px;
+    }
+}
+
+/* ===== ALUR PELAYANAN (RAPI) ===== */
+.alur-list {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.alur-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+
+    background: #f9fdfb;
+    border-radius: 14px;
+    padding: 16px 18px;
+
+    border-left: 5px solid #27ae60;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+
+.alur-number {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+}
+
+.alur-text h4 {
+    margin: 0 0 4px;
+    font-size: 16px;
+    color: #27ae60;
+}
+
+.alur-text p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #444;
+}
+
+/* MOBILE EXTRA */
+@media (max-width: 768px) {
+    .alur-item {
+        padding: 14px 15px;
+    }
+
+    .alur-text h4 {
+        font-size: 15px;
+    }
+
+    .alur-text p {
+        font-size: 13.5px;
+    }
+}
+
+/* ===== OVERLAY BLUR ===== */
+#overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.35s ease;
+    z-index: 9998;
+}
+
+#overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.sidebar {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+/* ===== SPRING ANIMATION INDICATOR ===== */
+.menu-indicator {
+    transition:
+        transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+        opacity 0.3s ease;
+}
+/* ===== TOMBOL UNDUH SOP ===== */
+.btn-unduh {
+    display: inline-block;
+    padding: 6px 12px;
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-unduh:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(39,174,96,0.4);
+}
+
+
+
+</style>
+</head>
+
+<body>
+
+<div id="overlay" onclick="toggleMenu()"></div>
+
+
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+<div class="sidebar" id="sidebar">
+    <h2>MENU</h2>
+    <a onclick="showSection('home')">BERANDA</a>
+    <a onclick="showSection('visi-misi')">VISI DAN MISI</a>
+    <a onclick="showSection('struktur')">STRUKTUR</a>
+    <a onclick="showSection('sop')">SOP PELAYANAN ADMINITRASI</a>
+    <a onclick="showSection('alur')">ALUR PELAYANAN</a>
+
+   
+</div>
+
+<header>
+    <img src="logo.jpg" class="logo-header">
+    <h1>Nagari Sundata Utara</h1>
+    <p>Kecamatan Lubuk Sikaping</p>
+    
+
+</header>
+
+<div class="container">
+
+<section id="home" class="active">
+    <h2>Berita & Informasi Nagari</h2>
+    <div id="homeBerita">
+        <p>Memuat berita terbaru...</p>
+    </div>
+</section>
+
+
+<section id="visi-misi">
+    <h2>Visi & Misi</h2>
+
+    <div class="vm-wrapper">
+
+        <!-- VISI -->
+        <div class="vm-card">
+            <div class="vm-header">
+                <div class="vm-icon">🎯</div>
+                <h3>Visi</h3>
+            </div>
+            <p>
+                <i>
+                    "Mewujudkan pelayanan yang lebih baik dan bermartabat
+                    untuk mensejahterakan masyarakat Nagari Sundata Utara"
+                </i>
+            </p>
+        </div>
+
+        <!-- MISI -->
+        <div class="vm-card">
+            <div class="vm-header">
+                <div class="vm-icon">📌</div>
+                <h3>Misi</h3>
+            </div>
+            <ul>
+                <li>Menyelenggarakan pelayanan publik yang cepat, tepat, dan transparan</li>
+                <li>Memberikan pelayanan tanpa diskriminasi kepada masyarakat</li>
+                <li>Meningkatkan kualitas sumber daya manusia aparatur nagari</li>
+                <li>Memberikan Pelayanan dengan Penuh Sopan dan Santun dan Keramahan</li>
+                <li>Menerapkan Prinsip "EFEKTIFITAS DAN EFESIENSI KERJA"</li>
+                <li>Melakukan Inovasi Secara Terus Menerus dan Kesinambungan</li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+
+
+
+<section id="struktur">
+    <h2>Struktur Pemerintahan</h2>
+    <h3 style="text-align:center;margin-top:30px;color:#27ae60">
+Perangkat Nagari
+</h3>
+
+
+    <!-- WALI NAGARI -->
+    <div class="org-chart">
+        <div class="org-box leader">
+            <img src="Wali.jpeg">
+            <h4>NOFRIYAN, S.Or</h4>
+            <p>Wali Nagari</p>
+        </div>
+    </div>
+
+    <div class="org-line"></div>
+
+    <!-- SEKRETARIS -->
+    <div class="org-chart">
+        <div class="org-box">
+            <img src="Sekna.jpeg">
+            <h4>SYAFRIZAL</h4>
+            <p>Sekretaris Nagari</p>
+        </div>
+    </div>
+
+    <div class="org-line"></div>
+
+    <!-- KAUR -->
+    <div class="org-level">
+        <div class="org-box">
+            <img src="Kaur Permerintahan.jpeg">
+            <h4>DAHRUL ABRO</h4>
+            <p>Kasi Pemerintahan</p>
+        </div>
+
+        <div class="org-box">
+            <img src="Kaur Kesra.jpeg">
+            <h4>NELI AGUSTIN SAPITRI, S.Pd</h4>
+            <p>Kasi Kesejahteraan dan Pelayanan</p>
+        </div>
+
+        <div class="org-box">
+            <img src="Kaur Keuangan.jpeg">
+            <h4>YULITA RISNA, S.Pd</h4>
+            <p>Kaur Keuangan</p>
+        </div>
+
+        <div class="org-box">
+            <img src="Staf kasi Pemerintahan.jpeg">
+            <h4>MEGA SILVANA ERRIA</h4>
+            <p>Staf Kasi Pemerintah</p>
+        </div>
+
+        <div class="org-box">
+            <img src="Staf Kasi Kesra.jpeg">
+            <h4>NORA LESTIA PUTRI, SE</h4>
+            <p>Staf Kasi Kesejahteraan dan Pelayanan</p>
+        </div>
+
+        <div class="org-box">
+            <img src="Staff Kaur Keuangan.jpeg">
+            <h4>EWINI ELFI</h4>
+            <p>Staf Kaur Keuangan</p>
+        </div>
+
+         <div class="org-box">
+            <img src="Staff Kaur umum.jpeg">
+            <h4>NURFITRA,S.Pd</h4>
+            <p>Staf Kaur Umum dan Perencanaan</p>
+        </div>
+    </div>
+
+    <div class="org-line"></div>
+
+    <!-- JORONG -->
+    <div class="org-level">
+        <div class="org-box">
+            <img src="JORONG.jpeg">
+            <h4>JULFI HENDRIX</h4>
+            <p>JORONG SALIBAWAN </p>
+        </div>
+
+        <div class="org-box">
+            <img src="jorong mapun.jpeg">
+            <h4>ARWIN LUBIS, S.Pd</h4>
+            <p>JORONG MAPUN</p>
+        </div>
+
+    </div>
+</section>
+
+<section id="sop">
+    <h2>SOP Pelayanan Administrasi Surat</h2>
+
+    <!-- SEARCH SOP -->
+    <input 
+        type="text" 
+        id="searchSOP" 
+        placeholder="Cari jenis surat atau syarat..."
+        onkeyup="filterSOP()"
+        class="search-sop"
+    >
+
+    <div class="table-wrapper">
+        <table class="sop-table" id="sopTable">
+    <tr>
+        <th>No</th>
+        <th>Jenis Surat</th>
+        <th>Syarat Mengurus</th>
+        <th>Lama Mengurus</th>
+        <th>File Dokumen</th>
+    </tr>
+
+    <tr>
+        <td>1</td>
+        <td>Surat Keterangan Tidak Mampu/ Miskin</td>
+        <td>KTP/ KK, Foto Copy KK 1 Lembar, Bukti Lunas PBB-P2</td>
+        <td>Maksimal 15 menit</td>
+        <td> <a href="dokumen/Domisili.pdf" class="btn-unduh" download>Unduh</a></td>
+    </tr>
+
+    <tr>
+        <td>2</td>
+        <td>Surat Keterangan Domisili </td>
+        <td>KTP/ KK, Foto Copy KK 1 Lembar, Bukti Lunas PBB-P2</td>
+        <td>Maksimal 15 menit</td>
+        <td><a href="dokumen/Domisili.pdf" class="btn-unduh" download>Unduh</a></td>
+    </tr>
+
+    <tr>
+        <td>3</td>
+        <td>Surat Keterangan Domisili Partai Politik</td>
+        <td>KTP/ KK Pengurus, AD/ HRT & SK Pengurus, Bukti Lunas PBB-P2</td>
+        <td>Maksimal 25 menit</td>
+        <td><a href="dokumen/Domisili.pdf" class="btn-unduh" download>Unduh</a></td>
+    </tr>
+
+    <tr>
+        <td>4</td>
+        <td>Surat Keterangan Domisili Perusahaan</td>
+        <td>KTP/ KK Pimpinan, Akta Notaris, Bukti Lunas PBB-P2</td>
+        <td>Maksimal 25 menit</td>
+        <td><a href="dokumen/Domisili.pdf" class="btn-unduh" download>Unduh</a></td>
+    </tr>
+
+    <tr>
+        <td>5</td>
+        <td>Surat Keterangan Domisili Kantor</td>
+        <td>KTP/ KK Pimpinan, Akta Notaris, Bukti Lunas PBB-P2</td>
+        <td>Maksimal 25 menit</td>
+        <td><a href="dokumen/Domisili.pdf" class="btn-unduh" download>Unduh</a></td>
+    </tr>
+
+    <tr>
+        <td>6</td>
+        <td>Surat Keterangan Usaha</td>
+        <td>KTP/ KK, Foto Copy KK 1 Lembar, Bukti Lunas PBB-P2</td>
+        <td>Maksimal 15 menit</td>
+        <td><a href="dokumen/Domisili.pdf" class="btn-unduh" download>Unduh</a></td>
+    </tr>
+
+    <tr>
+        <td>7</td>
+        <td>Surat Keterangan Berkelakuan Baik</td>
+        <td>KTP/ KK, Foto Copy KK 1 Lembar, Bukti Lunas PBB-P2</td>
+        <td>Maksimal 15 menit</td>
+        <td><a href="dokumen/Domisili.pdf" class="btn-unduh" download>Unduh</a></td>
+    </tr>
+
+    <tr>
+        <td>8</td>
+        <td>Surat Keterangan Ahli Waris</td>
+        <td>KTP/ KK, Foto Copy KK 1 Lembar, Bukti Lunas PBB-P2</td>
+        <td>Maksimal 25 menit</td>
+        <td><a href="dokumen/Domisili.pdf" class="btn-unduh" download>Unduh</a></td>
+    </tr>
+
+    <tr>
+        <td>9</td>
+        <td>Surat Keterangan Meninggal Dunia</td>
+        <td>Surat Pengantar dari Kep. Jorong, KK/ KTP, Foto Copy KK 1 lembar, Surat Keterangan dari Dokter, Bukti Lunas PBB-P2</td>
+        <td>Maksimal 20 menit</td>
+        <td><a href="SURAT KETERANGAN MENINGGAL DUNIA 2014 - Copy.docx" class="btn-unduh" download>Unduh</a></td>
+    </tr>
+
+    <tr>
+        <td>10</td>
+        <td>Surat Keterangan Janda/ Duda</td>
+        <td>KTP/ KK, Foto Copy KK 1 Lembar, Akta Cerai, Bukti Lunas PBB-P2</td>
+        <td>Maksimal 15 menit</td>
+        <td><a href="dokumen/Domisili.pdf" class="btn-unduh" download>Unduh</a></td>
+    </tr>
+
+    <tr>
+        <td>11</td>
+        <td>Surat Keterangan Pindah</td>
+        <td>KTP/ KK, Foto Copy KK 1 Lembar, Bukti Lunas PBB-P2</td>
+        <td>Maksimal 20 menit</td>
+        <td><a href="dokumen/Domisili.pdf" class="btn-unduh" download>Unduh</a></td>
+    </tr>
+
+    <tr>
+        <td>12</td>
+        <td>Surat Keterangan Memiliki Rumah</td>
+        <td>KTP/ KK, Foto Copy KK 1 Lembar, Bukti Lunas PBB-P2</td>
+        <td>Maksimal 15 menit</td>
+        <td><a href="dokumen/Domisili.pdf" class="btn-unduh" download>Unduh</a></td>
+    </tr>
+
+    <tr>
+        <td>13</td>
+        <td>Surat Keterangan Hilang</td>
+        <td>Surat  Pengantar dari Kep. Jorong, KTP/ KK, Foto Copy KK 1 Lembar, Bukti Lunas PBB-P2</td>
+        <td>Maksimal 20 menit</td>
+        <td><a href="dokumen/Domisili.pdf" class="btn-unduh" download>Unduh</a></td>
+    </tr>
+
+    <tr>
+        <td>14</td>
+        <td>Surat Keterangan Izin Keramaian</td>
+        <td>KTP/ KK, Foto Copy KK 1 Lembar, Surat Pernyataan dari yang Bersangkutan</td>
+        <td>Maksimal 20 menit</td>
+        <td><a href="dokumen/Domisili.pdf" class="btn-unduh" download>Unduh</a></td>
+    </tr>
+
+    <tr>
+        <td>15</td>
+        <td>Surat Keterangan Belum Menikah</td>
+        <td>KTP/ KK, Foto Copy KK 1 Lembar, Bukti Lunas PBB-P2</td>
+        <td>Maksimal 15 menit</td>
+        <td><a href="dokumen/Domisili.pdf" class="btn-unduh" download>Unduh</a></td>
+    </tr>
+
+    <tr>
+        <td>16</td>
+        <td>Surat Keterangan Masih Hidup</td>
+        <td>KTP/ KK, Foto Copy KK 1 Lembar, Bukti Lunas PBB-P2</td>
+        <td>Maksimal  15 menit</td>
+        <td><a href="dokumen/Domisili.pdf" class="btn-unduh" download>Unduh</a></td>
+    </tr>
+
+    <tr>
+        <td>17</td>
+        <td>Surat Keterangan Penghasilan Orang Tua</td>
+        <td>KTP/ KK, Foto Copy KK 1 Lembar, Bukti Lunas PBB-P2</td>
+        <td>Maksimal 15 menit</td>
+        <td><a href="dokumen/Domisili.pdf" class="btn-unduh" download>Unduh</a></td>
+    </tr>
+
+    <tr>
+        <td>18</td>
+        <td>Surat Keterangan Lain-lain</td>
+        <td>KTP/ KK, Foto Copy KK 1 Lembar, Bukti Lunas PBB-P2</td>
+        <td>Maksimal 25 menit</td>
+        <td><a href="dokumen/Domisili.pdf" class="btn-unduh" download>Unduh</a></td>
+    </tr>
+
+    <tr>
+        <td>19</td>
+        <td>SK Kelompok masyarakat</td>
+        <td>Surat Pengantar dari Kep. Jorong, KTP/ KK Pengurus, Berita Acara Pembentukan Kelompok Masyarakat, Daftar Hadir Anggota Kelompok, Bukti Lunas PBB-P2</td>
+        <td>Maksimal 1 hari kerja</td>
+        <td><a href="dokumen/Domisili.pdf" class="btn-unduh" download>Unduh</a></td>
+    </tr>
+
+    <tr>
+        <td>20</td>
+        <td>Surat Pensiun</td>
+        <td>Karip, KTP/ KK, Bukti Lunas PBB-P2</td>
+        <td>Maksimal 15 menit</td>
+        <td><a href="dokumen/Domisili.pdf" class="btn-unduh" download>Unduh</a></td>
+    </tr>
+
+    <tr>
+        <td>21</td>
+        <td>Administrasi Kependudukan (Akta Lahir, Akta Kematian, KK, KTP, dan lain-lain kecuali KTP dan KIA masih di DISDUKCAPIL)</td>
+        <td>KK Asli, Surat Nikah, Ijazah atau Lapor, Materai Rp.10.000, Surat Keterangan Kelahiran dari RSUD/Puskesmas/Bidan, Surat Keterangan Pindah, Akta Cerai dari Pengadilan, Surat Keterangan Kepolisian, Surat Keterangan Meninggal Dunia, Bukti Lunas PBB-P2</td>
+        <td>Maksimal 1-5 hari kerja</td>
+        <td><a href="dokumen/Domisili.pdf" class="btn-unduh" download>Unduh</a></td>
+    </tr>
+
+    <tr>
+        <td>22</td>
+        <td>Pengantar NA</td>
+        <td>Blanko  Surat Keterangan Izin Menikah dari Jorong, KK dan KTP Kedua Calon Mempelai, Surat Cerai atau  Meninggal Dunia, Materai Rp.10.000, Bukti Lunas PBB-P2</td>
+        <td>1 Hari Kerja</td>
+        <td><a href="dokumen/Domisili.pdf" class="btn-unduh" download>Unduh</a></td>
+    </tr>
+
+    <tr>
+        <td>23</td>
+        <td>Administrasi Tanah</td>
+        <td>KTP/ KK, Bukti Kepemilikan Tanah, Formulir, Bukit Lunas PBB-P2</td>
+        <td>3-5 hari kerja</td>
+        <td><a href="dokumen/Domisili.pdf" class="btn-unduh" download>Unduh</a></td>
+    </tr>
+
+</table>
+
+    </div>
+</section>
+
+<section id="alur">
+    <h2>Alur Pelayanan Administrasi</h2>
+    <p style="font-size:14px;color:#666;margin-top:-8px">
+        Berikut tahapan pelayanan administrasi di Nagari Sundata Utara
+    </p>
+
+    <div class="alur-list">
+
+        <div class="alur-item">
+            <div class="alur-number">1</div>
+            <div class="alur-text">
+                <h4>Datang ke Kantor Nagari</h4>
+                <p>Masyarakat datang membawa persyaratan administrasi.</p>
+            </div>
+        </div>
+
+        <div class="alur-item">
+            <div class="alur-number">2</div>
+            <div class="alur-text">
+                <h4>Pemeriksaan Berkas</h4>
+                <p>Petugas memeriksa kelengkapan dan kesesuaian berkas.</p>
+            </div>
+        </div>
+
+        <div class="alur-item">
+            <div class="alur-number">3</div>
+            <div class="alur-text">
+                <h4>Proses Administrasi</h4>
+                <p>Berkas diproses sesuai jenis pelayanan.</p>
+            </div>
+        </div>
+
+        <div class="alur-item">
+            <div class="alur-number">4</div>
+            <div class="alur-text">
+                <h4>Pengesahan</h4>
+                <p>Dokumen ditandatangani oleh pejabat berwenang.</p>
+            </div>
+        </div>
+
+        <div class="alur-item">
+            <div class="alur-number">5</div>
+            <div class="alur-text">
+                <h4>Pengambilan Surat</h4>
+                <p>Surat selesai dan dapat diambil oleh pemohon.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<script>
+const SHEET_URL = "https://docs.google.com/spreadsheets/d/1lo_QQr2i2q2zL0-qniSwJgADEoEBGDgWmvh-arQZSTM/gviz/tq?gid=1522309379&headers=1&tq=&tqx=out:json";
+
+async function loadBerita() {
+    const home = document.getElementById("homeBerita");
+
+    try {
+        const res = await fetch(SHEET_URL);
+        const text = await res.text();
+
+        const json = JSON.parse(text.substring(47).slice(0, -2));
+        const rows = json.table.rows;
+
+        home.innerHTML = "";
+
+        if (!rows || rows.length === 0) {
+            home.innerHTML = "<p>Tidak ada berita.</p>";
+            return;
+        }
+
+        rows.reverse().forEach(r => {
+            const judul = r.c[1]?.v || "Pertanyaan Tanpa Judul"; // Kolom B
+            const link  = r.c[2]?.v || "Column";          // Kolom C
+
+            home.innerHTML += `
+                <div style="
+                    background:#f1f8e9;
+                    padding:14px;
+                    border-radius:10px;
+                    margin-bottom:12px;
+                    border-left:5px solid #27ae60">
+                    <a href="${link}" target="_blank"
+                       style="text-decoration:none;color:#2c3e50;font-weight:bold">
+                        ${judul}
+                    </a>
+                </div>
+            `;
+        });
+
+    } catch (e) {
+        console.error(e);
+        home.innerHTML = "<p>Gagal memuat berita.</p>";
+    }
+}
+
+loadBerita();
+</script>
+
+<script>
+document.querySelectorAll(".sidebar a").forEach(link => {
+    link.addEventListener("click", () => {
+        const indicator = document.querySelector(".menu-indicator");
+        if (!indicator) return;
+
+        indicator.style.opacity = "0.85";
+        setTimeout(() => {
+            indicator.style.opacity = "1";
+        }, 120);
+    });
+});
+</script>
+
+
+
+</div>
+
+<footer>
+    <p>&copy; 2026 Pemerintah Sundata Utara</p>
+</footer>
+
+<script>
+function toggleMenu() {
+    document.getElementById("sidebar").classList.toggle("active");
+    document.getElementById("overlay").classList.toggle("active");
+}
+
+function showSection(id) {
+    document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
+    toggleMenu();
+}
+
+/* ===== SEARCH SOP ===== */
+function filterSOP() {
+    // ambil value input dan ubah jadi huruf kecil
+    let input = document.getElementById("searchSOP");
+    if (!input) return; // safety check
+    let filter = input.value.toLowerCase();
+
+    // ambil semua baris tabel
+    let table = document.getElementById("sopTable");
+    if (!table) return; // safety check
+    let rows = table.getElementsByTagName("tr");
+
+    for (let i = 1; i < rows.length; i++) { // mulai dari 1 supaya header tidak ikut
+        let rowText = rows[i].innerText.toLowerCase();
+        if (rowText.indexOf(filter) > -1) {
+            rows[i].style.display = "";
+        } else {
+            rows[i].style.display = "none";
+        }
+    }
+}
+
+
+</script>
+
+</body>
+</html>

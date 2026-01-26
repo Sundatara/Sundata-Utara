@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Nagari Sundata Utara</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            color: #333;
+            /* Perbaikan: Menggunakan tanda kutip tunggal di dalam url agar tidak bentrok */
+            background-image: 
+                linear-gradient(rgba(244, 244, 244, 0.7), rgba(244, 244, 244, 0.7)),
+                url("{{ url_for('static', filename='OIP (1).jpg') }}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+        
+        header {
+            background: rgba(44, 62, 80, 0.85); 
+            color: #ffffff;
+            padding: 2.5rem 0;
+            text-align: center;
+            backdrop-filter: blur(8px);
+        }
+        
+        .logo-header {
+            width: 120px; /* Ukuran sedikit diperbesar agar jelas */
+            height: 120px;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border-radius: 50%;
+            border: 3px solid #ffffff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        
+        .container {
+            width: 80%;
+            margin: 30px auto;
+            background: rgba(255, 255, 255, 0.92); 
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            color: #27ae60;
+            border-bottom: 2px solid #27ae60;
+            padding-bottom: 10px;
+        }
+
+        .layanan-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .layanan-list li {
+            background: rgba(232, 245, 233, 0.8);
+            padding: 12px 18px;
+            margin-bottom: 10px;
+            border-left: 6px solid #27ae60;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .layanan-list li:hover {
+            transform: translateX(10px);
+            background: #27ae60;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Logo Nagari Sundata Utara" class="logo-header">
+        <h1>NAGARI SUNDATA UTARA</h1>
+        <p>Kecamatan Lubuk Sikaping, Kabupaten Pasaman</p>
+    </header>
+
+    <div class="container">
+        <section>
+            <h2>Visi</h2>
+            <p style="font-size: 1.2rem; text-align: center; font-style: italic;">
+                "Mewujudkan Pelayanan yang Lebih Baik dan Bermartabat untuk Mensejahterakan Masyarakat"
+            </p>
+        </section>
+
+        <section>
+            <h2>Misi</h2>
+            <ul class="layanan-list">
+                <li>1. Memberikan Pelayanan yang Cepat, Tepat, dan Akurat dengan Mempedomani Aturan yang Berlaku</li>
+                <li>2. Tidak Membedakan Satu Sama Lainnya dalam Memberikan Pelayanan</li>
+                <li>3. Meningkatkan Sumber Daya Manusia, Ilmu Pengetahuan dan Teknologi (IPTEK) Petugas Pelayanan</li>
+                <li>4. Memberikan Pelayanan dengan Penuh Sopan Santun dan Keramahan</li>
+                <li>5. Menerapkan Prinsip "EFEKTIFITAS DAN EFISIENSI KERJA"</li>
+                <li>6. Melakukan Inovasi Secara Terus Menerus dan Kesinambungan</li>
+            </ul>
+        </section>
+    </div>
+
+    <footer style="text-align: center; padding: 20px;">
+        <p>&copy; 2026 Pemerintah Nagari Sundata Utara</p>
+    </footer>
+
+</body>
+</html>
