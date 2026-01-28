@@ -687,10 +687,13 @@ header h1::after {
 <div class="sidebar" id="sidebar">
     <h2>MENU</h2>
     <a onclick="showSection('home')">BERANDA</a>
+    <a onclick="showSection('biografi')">BIOGRAFI NAGARI</a>
     <a onclick="showSection('visi-misi')">VISI DAN MISI</a>
     <a onclick="showSection('struktur')">STRUKTUR</a>
+    <a onclick="showSection('bamus')">STRUKTUR BAMUS DAN LPMN </a>
     <a onclick="showSection('sop')">SOP PELAYANAN ADMINITRASI</a>
     <a onclick="showSection('alur')">ALUR PELAYANAN</a>
+    
 
    
 </div>
@@ -711,6 +714,75 @@ header h1::after {
         <p>Memuat berita terbaru...</p>
     </div>
 </section>
+
+<section id="biografi">
+    <h2>Biografi Nagari Sundata Utara</h2>
+
+    <!-- SEJARAH -->
+    <div class="vm-card">
+        <div class="vm-header">
+            <div class="vm-icon">📜</div>
+            <h3>Sejarah Singkat</h3>
+        </div>
+        <p>
+            Nagari Sundata Utara merupakan salah satu nagari yang berada di
+            Kecamatan Lubuk Sikaping, Kabupaten Pasaman.
+            Nagari ini terbentuk sebagai hasil pemekaran wilayah
+            dengan tujuan meningkatkan pelayanan pemerintahan
+            dan kesejahteraan masyarakat.
+        </p>
+        <p>
+            Secara historis, masyarakat Nagari Sundata Utara
+            memiliki adat dan budaya Minangkabau
+            yang masih dijunjung tinggi dalam kehidupan sehari-hari.
+        </p>
+    </div>
+
+    <!-- GEOGRAFIS -->
+    <div class="vm-card">
+        <div class="vm-header">
+            <div class="vm-icon">🌍</div>
+            <h3>Letak Geografis</h3>
+        </div>
+        <p>
+            Nagari Sundata Utara terletak di wilayah Kecamatan Lubuk Sikaping
+            dengan kondisi topografi yang sebagian besar berupa
+            perbukitan dan lahan pertanian.
+        </p>
+        <ul>
+            <li>Sebelah Utara: ………………………</li>
+            <li>Sebelah Selatan: ………………………</li>
+            <li>Sebelah Timur: ………………………</li>
+            <li>Sebelah Barat: ………………………</li>
+        </ul>
+    </div>
+
+    <!-- PETA -->
+    <div class="vm-card">
+        <div class="vm-header">
+            <div class="vm-icon">🗺️</div>
+            <h3>Peta Wilayah Nagari</h3>
+        </div>
+
+        <div style="width:100%;height:400px;border-radius:14px;overflow:hidden">
+            <!-- GANTI LINK MAP DI SINI -->
+            <iframe
+                src="https://maps.app.goo.gl/HmRRT4U3hZW9rHkZ9"
+                width="100%"
+                height="100%"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy">
+            </iframe>
+        </div>
+
+        <p style="font-size:13px;color:#666;margin-top:10px">
+            Peta wilayah Nagari Sundata Utara untuk memudahkan akses dan informasi lokasi.
+        </p>
+    </div>
+
+</section>
+
 
 
 <section id="visi-misi">
@@ -750,7 +822,6 @@ header h1::after {
 
     </div>
 </section>
-
 
 
 <section id="struktur">
@@ -845,6 +916,42 @@ Perangkat Nagari
 
     </div>
 </section>
+
+<section id="bamus">
+    <h2>Struktur BAMUS</h2>
+    <h3 style="text-align:center;margin-top:30px;color:#27ae60">
+        Badan Musyawarah Nagari
+    </h3>
+
+    <div class="org-level">
+        <div class="org-box leader">
+            <img src="bamus_ketua.jpg">
+            <h4>NAMA KETUA BAMUS</h4>
+            <p>Ketua BAMUS</p>
+        </div>
+    </div>
+
+    <div class="org-level">
+        <div class="org-box">
+            <img src="bamus_wakil.jpg">
+            <h4>NAMA WAKIL</h4>
+            <p>Wakil Ketua</p>
+        </div>
+
+        <div class="org-box">
+            <img src="bamus_sekretaris.jpg">
+            <h4>NAMA SEKRETARIS</h4>
+            <p>Sekretaris</p>
+        </div>
+
+        <div class="org-box">
+            <img src="bamus_anggota.jpg">
+            <h4>NAMA ANGGOTA</h4>
+            <p>Anggota</p>
+        </div>
+    </div>
+</section>
+
 
 <section id="sop">
     <h2>SOP Pelayanan Administrasi Surat</h2>
@@ -1057,6 +1164,7 @@ Perangkat Nagari
     </div>
 </section>
 
+
 <section id="alur">
     <h2>Alur Pelayanan Administrasi</h2>
     <p style="font-size:14px;color:#666;margin-top:-8px">
@@ -1186,10 +1294,31 @@ function toggleMenu() {
 }
 
 function showSection(id) {
+    // matikan semua section
     document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
-    document.getElementById(id).classList.add("active");
-    toggleMenu();
+
+    // aktifkan section tujuan
+    const target = document.getElementById(id);
+    if (target) {
+        target.classList.add("active");
+    }
+
+    // scroll ke atas container (INI KUNCINYA)
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+    // tutup sidebar kalau aktif
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
+
+    if (sidebar.classList.contains("active")) {
+        sidebar.classList.remove("active");
+        overlay.classList.remove("active");
+    }
 }
+
 
 /* ===== SEARCH SOP ===== */
 function filterSOP() {
@@ -1217,6 +1346,4 @@ function filterSOP() {
 </script>
 
 </body>
-
 </html>
-
