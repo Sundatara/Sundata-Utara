@@ -672,6 +672,55 @@ header h1::after {
     box-shadow: 0 6px 15px rgba(39,174,96,0.4);
 }
 
+#grafik-arus-kas {
+    margin: 60px 0;
+}
+
+#grafik-arus-kas h2 {
+    text-align: center;
+}
+
+#chart-arus-kas {
+    max-width: 700px;
+    margin: 30px auto;
+}
+
+.bar-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.bar-label {
+    width: 60px;
+    font-weight: bold;
+}
+
+.bar-bg {
+    flex: 1;
+    background: #eee;
+    height: 22px;
+    margin: 0 10px;
+}
+
+.bar-fill {
+    height: 100%;
+}
+
+.bar-income {
+    background: #2e7d32;
+}
+
+.bar-expense {
+    background: #c62828;
+}
+
+.bar-value {
+    width: 140px;
+    font-size: 13px;
+    text-align: right;
+}
+
 
 
 </style>
@@ -686,13 +735,16 @@ header h1::after {
 
 <div class="sidebar" id="sidebar">
     <h2>MENU</h2>
-    <a onclick="showSection('home')">BERANDA</a>
-    <a onclick="showSection('biografi')">BIOGRAFI NAGARI</a>
-    <a onclick="showSection('visi-misi')">VISI DAN MISI</a>
-    <a onclick="showSection('struktur')">STRUKTUR</a>
-    <a onclick="showSection('bamus')">STRUKTUR BAMUS DAN LPMN </a>
-    <a onclick="showSection('sop')">SOP PELAYANAN ADMINITRASI</a>
-    <a onclick="showSection('alur')">ALUR PELAYANAN</a>
+    <a onclick="showSection('home')">Beranda</a>
+    <a onclick="showSection('biografi')">Biografi Nagari</a>
+    <a onclick="showSection('visi-misi')">Visi dan Misi</a>
+    <a onclick="showSection('struktur')">Struktur Nagari</a>
+    <a onclick="showSection('bamus')">Struktur BAMUS dan LPMN </a>
+    <a onclick="showSection('sop')">SOP Pelayanan dan Adminitrasi</a>
+    <a onclick="showSection('alur')">Alur Pelayanan</a>
+    <a onclick="showSection('arus-kas')">Arus Kas Nagari</a>
+    
+
     
 
    
@@ -724,18 +776,29 @@ header h1::after {
             <div class="vm-icon">📜</div>
             <h3>Sejarah Singkat</h3>
         </div>
-        <p>
-            Nagari Sundata Utara merupakan salah satu nagari yang berada di
-            Kecamatan Lubuk Sikaping, Kabupaten Pasaman.
-            Nagari ini terbentuk sebagai hasil pemekaran wilayah
-            dengan tujuan meningkatkan pelayanan pemerintahan
-            dan kesejahteraan masyarakat.
-        </p>
-        <p>
-            Secara historis, masyarakat Nagari Sundata Utara
-            memiliki adat dan budaya Minangkabau
-            yang masih dijunjung tinggi dalam kehidupan sehari-hari.
-        </p>
+        <p style="margin-bottom:20px; line-height:1.7; color:#444;">
+Nagari Sundata Utara merupakan salah satu nagari yang berada di wilayah 
+Kecamatan Lubuk Sikaping, Kabupaten Pasaman, Provinsi Sumatera Barat. 
+Nagari ini terbentuk melalui proses pemekaran wilayah administrasi 
+yang bertujuan untuk meningkatkan efektivitas penyelenggaraan pemerintahan 
+serta mendekatkan pelayanan kepada masyarakat.
+</p>
+
+<p>
+Secara historis, masyarakat Nagari Sundata Utara berasal dari rumpun 
+masyarakat Minangkabau yang menjunjung tinggi nilai-nilai adat, 
+agama, dan budaya dalam kehidupan bermasyarakat. 
+Prinsip <i>“Adat basandi syarak, syarak basandi Kitabullah”</i> 
+menjadi pedoman utama dalam penyelenggaraan kehidupan sosial dan pemerintahan nagari.
+</p>
+
+<p>
+Seiring dengan perkembangan zaman, Nagari Sundata Utara terus melakukan 
+pembenahan dalam berbagai sektor, baik pemerintahan, pelayanan publik, 
+pembangunan infrastruktur, maupun pemberdayaan masyarakat, 
+guna mewujudkan nagari yang maju, mandiri, dan sejahtera.
+</p>
+
     </div>
 
     <!-- GEOGRAFIS -->
@@ -750,10 +813,10 @@ header h1::after {
             perbukitan dan lahan pertanian.
         </p>
         <ul>
-            <li>Sebelah Utara: ………………………</li>
-            <li>Sebelah Selatan: ………………………</li>
-            <li>Sebelah Timur: ………………………</li>
-            <li>Sebelah Barat: ………………………</li>
+            <li>Sebelah Utara: PANTI</li>
+            <li>Sebelah Selatan: SUNDATA</li>
+            <li>Sebelah Timur: TALU</li>
+            <li>Sebelah Barat: </li>
         </ul>
     </div>
 
@@ -765,16 +828,17 @@ header h1::after {
         </div>
 
         <div style="width:100%;height:400px;border-radius:14px;overflow:hidden">
-            <!-- GANTI LINK MAP DI SINI -->
-            <iframe
-                src="https://maps.app.goo.gl/HmRRT4U3hZW9rHkZ9"
-                width="100%"
-                height="100%"
-                style="border:0;"
-                allowfullscreen=""
-                loading="lazy">
-            </iframe>
-        </div>
+    <iframe
+        src="https://www.google.com/maps?q=Nagari%20Sundata%20Utara,%20Lubuk%20Sikaping,%20Pasaman&output=embed"
+        width="100%"
+        height="100%"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+</div>
+
 
         <p style="font-size:13px;color:#666;margin-top:10px">
             Peta wilayah Nagari Sundata Utara untuk memudahkan akses dan informasi lokasi.
@@ -925,31 +989,109 @@ Perangkat Nagari
 
     <div class="org-level">
         <div class="org-box leader">
-            <img src="bamus_ketua.jpg">
-            <h4>NAMA KETUA BAMUS</h4>
+            <img src="KETUA BAMUS.jpeg">
+            <h4>IBRIZA PUTRA</h4>
             <p>Ketua BAMUS</p>
         </div>
     </div>
 
     <div class="org-level">
         <div class="org-box">
-            <img src="bamus_wakil.jpg">
-            <h4>NAMA WAKIL</h4>
+            <img src="biru.png">
+            <h4>Zuhelmi, SE</h4>
             <p>Wakil Ketua</p>
         </div>
 
         <div class="org-box">
-            <img src="bamus_sekretaris.jpg">
-            <h4>NAMA SEKRETARIS</h4>
+            <img src="SEKRETARIS.jpeg">
+            <h4>FADMA SURI</h4>
             <p>Sekretaris</p>
         </div>
 
         <div class="org-box">
-            <img src="bamus_anggota.jpg">
-            <h4>NAMA ANGGOTA</h4>
+            <img src="pak boy.jpeg">
+            <h4>Yuneldi</h4>
+            <p>Anggota</p>
+        </div>
+
+        <div class="org-box">
+            <img src="anggota.jpeg">
+            <h4>Hilman Syarif</h4>
             <p>Anggota</p>
         </div>
     </div>
+
+    <h4 style="
+    margin-top:10px;
+    margin-bottom:1px;
+    color:#2c3e50;
+">
+    Susunan Pengurus LPMN
+</h4>
+    <div class="table-wrapper" style="margin-top:25px">
+    <table class="sop-table">
+        <tr>
+            <th>No</th>
+            <th>Nama</th>
+            <th>Jabatan</th>
+        </tr>
+
+        <tr>
+            <td>1</td>
+            <td>Muharbi</td>
+            <td>Ketua</td>
+        </tr>
+
+        <tr>
+            <td>2</td>
+            <td>Ihsan</td>
+            <td>Wakil Ketua</td>
+        </tr>
+
+        <tr>
+            <td>3</td>
+            <td>Azmar Enong</td>
+            <td>Sekretaris</td>
+        </tr>
+
+        <tr>
+            <td>4</td>
+            <td>Nurhayati</td>
+            <td>Bendahara</td>
+        </tr>
+
+        <tr>
+            <td>5</td>
+            <td>Farisal Akmal</td>
+            <td>Anggota</td>
+        </tr>
+
+        <tr>
+            <td>6</td>
+            <td>Sholihan Arwie</td>
+            <td>Anggota</td>
+        </tr>
+
+         <tr>
+            <td>7</td>
+            <td>Ahmad Firzam</td>
+            <td>Anggota</td>
+        </tr>
+
+         <tr>
+            <td>8</td>
+            <td>Arfah</td>
+            <td>Anggota</td>
+        </tr>
+
+         <tr>
+            <td>9</td>
+            <td>Yusrinal</td>
+            <td>Anggota</td>
+        </tr>
+    </table>
+</div>
+
 </section>
 
 
@@ -1216,6 +1358,21 @@ Perangkat Nagari
     </div>
 </section>
 
+<!-- ====== GRAFIK ARUS KAS ====== -->
+<section id="arus-kas">
+    <h2>Arus Kas Nagari</h2>
+    <p>Perbandingan Pendapatan dan Pengeluaran berdasarkan tahun</p>
+
+    <div id="chart-arus-kas"></div>
+</section>
+
+<section id="arus-kas" class="active">
+
+<!-- ====== END GRAFIK ====== -->
+
+
+
+
 
 <script>
 const SHEET_URL = "https://docs.google.com/spreadsheets/d/1lo_QQr2i2q2zL0-qniSwJgADEoEBGDgWmvh-arQZSTM/gviz/tq?gid=1522309379&headers=1&tq=&tqx=out:json";
@@ -1278,7 +1435,6 @@ document.querySelectorAll(".sidebar a").forEach(link => {
     });
 });
 </script>
-
 
 
 </div>
@@ -1344,6 +1500,103 @@ function filterSOP() {
 
 
 </script>
+
+<script>
+const radius = 90;
+const circumference = 2 * Math.PI * radius;
+
+const circle = document.querySelector(".progress");
+const text = document.getElementById("kas-value");
+
+circle.style.strokeDasharray = circumference;
+circle.style.strokeDashoffset = circumference;
+
+// AMBIL DATA DARI CSV (EXCEL)
+fetch("arus-kas.csv")
+    .then(response => response.text())
+    .then(data => {
+        const rows = data.split("\n");
+        const kas = parseInt(rows[1].split(",")[1]); // ambil angka kas
+
+        animateDonut(kas, 200000000); // TARGET KAS
+    });
+
+function animateDonut(value, max) {
+    let current = 0;
+    const step = value / 120;
+
+    function frame() {
+        current += step;
+        if (current > value) current = value;
+
+        const percent = current / max;
+        const offset = circumference * (1 - percent);
+
+        circle.style.strokeDashoffset = offset;
+        text.innerText = "Rp " + Math.floor(current).toLocaleString("id-ID");
+
+        if (current < value) {
+            requestAnimationFrame(frame);
+        }
+    }
+    frame();
+}
+</script>
+
+<script>
+const data = [
+    { tahun: "2023", pendapatan: 120000000, pengeluaran: 90000000 },
+    { tahun: "2024", pendapatan: 150000000, pengeluaran: 110000000 },
+    { tahun: "2025", pendapatan: 1906352092, pengeluaran: 1721067232 }
+];
+
+renderArusKas(data);
+
+function renderArusKas(data) {
+    const chart = document.getElementById("chart-arus-kas");
+    chart.innerHTML = "";
+
+    const max = Math.max(
+        ...data.map(d => Math.max(d.pendapatan, d.pengeluaran))
+    );
+
+    data.forEach(d => {
+        chart.innerHTML += `
+        <div class="bar-row">
+            <div class="bar-label">${d.tahun}</div>
+
+            <div class="bar-bg">
+                <div class="bar-fill bar-income"
+                     style="width:${(d.pendapatan / max) * 100}%">
+                </div>
+            </div>
+
+            <div class="bar-value">
+                Rp ${d.pendapatan.toLocaleString("id-ID")}
+            </div>
+        </div>
+
+        <div class="bar-row">
+            <div class="bar-label"></div>
+
+            <div class="bar-bg">
+                <div class="bar-fill bar-expense"
+                     style="width:${(d.pengeluaran / max) * 100}%">
+                </div>
+            </div>
+
+            <div class="bar-value">
+                Rp ${d.pengeluaran.toLocaleString("id-ID")}
+            </div>
+        </div>
+        `;
+    });
+}
+</script>
+
+
+
+
 
 </body>
 </html>
