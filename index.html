@@ -747,95 +747,93 @@ html {
     scroll-behavior: smooth;
 }
 
+/* ===== FORCE TABEL UMKM SAMA DENGAN SOP ===== */
+#umkm .sop-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  border: 1px solid #2eb35a;
+}
+
+#umkm .sop-table th {
+  background-color: #2eb35a !important;
+  color: #ffffff !important;
+  font-size: 13px !important;
+  font-weight: 600;
+  padding: 8px !important;
+  text-align: center;
+  border: 1px solid #2eb35a;
+}
+
+#umkm .sop-table td {
+  font-size: 13px !important;
+  padding: 8px !important;
+  border: 1px solid #e0e0e0;
+  vertical-align: top;
+  line-height: 1.4;
+}
+
+#umkm .sop-table tbody tr:nth-child(even) {
+  background-color: #f6fbf8;
+}
+
+#umkm .sop-table tbody tr:hover {
+  background-color: #eaf6ee;
+}
+
+/* Link alamat ke Google Maps */
+.alamat-link {
+  color: #1b7f3a;
+  text-decoration: underline;
+  font-size: 13px;
+}
+
+.alamat-link:hover {
+  color: #145c2a;
+  text-decoration: none;
+}
+/* Tombol alamat SOP */
+.btn-maps {
+  background-color: #2eb35a;
+  color: white;
+  padding: 5px 12px;
+  font-size: 12px;        /* ⬅ kecil & rapi */
+  font-weight: 600;
+  border-radius: 4px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-maps:hover {
+  background-color: #24964b;
+}
+.btn-maps {
+  background-color: #2eb35a !important;
+  color: white !important;
+}
+
+footer {
+  margin-top: auto;
+}
+
+.copyright-section {
+  margin-top: 15px;
+  padding-top: 8px;
+  border-top: 1px solid #e0e0e0;
+  text-align: center;
+  font-size: 12px;
+  color: #666;
+}
+
+
+
 </style>
 </head>
 
 <!-- TOMBOL SCROLL KE ATAS -->
 <button id="btnTop" title="Kembali ke atas">↑</button>
 
-<script>
-const UMKM_SHEET_URL =
-"https://docs.google.com/spreadsheets/d/1lo_QQr2i2q2zL0-qniSwJgADEoEBGDgWmvh-arQZSTM/gviz/tq?gid=1522309379&headers=1&tqx=out:json";
 
-async function loadUMKM() {
-    const tbody = document.getElementById("umkm-data");
-    if (!tbody) {
-        console.warn("Tabel UMKM tidak ditemukan");
-        return;
-    }
-
-    tbody.innerHTML = "<tr><td colspan='5'>Memuat data UMKM...</td></tr>";
-
-    try {
-        const res = await fetch(UMKM_SHEET_URL);
-        const text = await res.text();
-        const json = JSON.parse(text.substring(47).slice(0, -2));
-        const rows = json.table.rows;
-
-        tbody.innerHTML = "";
-
-        if (!rows || rows.length === 0) {
-            tbody.innerHTML = "<tr><td colspan='5'>Data UMKM belum tersedia</td></tr>";
-            return;
-        }
-
-        rows.forEach((r, i) => {
-            const no     = i + 1;
-            const nama   = r.c[1]?.v || "-";
-            const jenis  = r.c[2]?.v || "-";
-            const jam    = r.c[3]?.v || "-";
-            const alamat = r.c[4]?.v || "-";
-
-            tbody.innerHTML += `
-                <tr>
-                    <td>${no}</td>
-                    <td>${nama}</td>
-                    <td>${jenis}</td>
-                    <td>${jam}</td>
-                    <td>${alamat}</td>
-                </tr>
-            `;
-        });
-
-    } catch (e) {
-        console.error(e);
-        tbody.innerHTML =
-          "<tr><td colspan='5'>Gagal memuat data UMKM</td></tr>";
-    }
-}
-
-document.addEventListener("DOMContentLoaded", loadUMKM);
-</script>
-
-
-<script>
-async function loadUMKM() {
-  const response = await fetch("DATA_UMKM.xlsx");
-  const data = await response.arrayBuffer();
-
-  const workbook = XLSX.read(data, { type: "array" });
-  const sheet = workbook.Sheets[workbook.SheetNames[0]];
-  const rows = XLSX.utils.sheet_to_json(sheet);
-
-  const tbody = document.querySelector("#umkmTable tbody");
-  tbody.innerHTML = "";
-
-  rows.forEach(row => {
-    const tr = document.createElement("tr");
-    tr.innerHTML = `
-      <td>${row.No || ""}</td>
-      <td>${row["Nama UMKM"] || ""}</td>
-      <td>${row.Pemilik || ""}</td>
-      <td>${row["Jenis Usaha"] || ""}</td>
-      <td>${row.Alamat || ""}</td>
-      <td>${row.Timestamp || ""}</td>
-    `;
-    tbody.appendChild(tr);
-  });
-}
-
-document.addEventListener("DOMContentLoaded", loadUMKM);
-</script>
 
 <body>
 
@@ -1413,6 +1411,11 @@ Perangkat Nagari
 </table>
 
     </div>
+
+    <div class="copyright-section">
+  © <span id="tahun"></span> Pemerintah Sundata Utara
+</div>
+
 </section>
 
 
@@ -1465,6 +1468,10 @@ Perangkat Nagari
         </div>
 
     </div>
+
+    <div class="copyright-section">
+  © <span id="tahun"></span> Pemerintah Sundata Utara
+</div>
 </section>
 
 <!-- ====== GRAFIK ARUS KAS ====== -->
@@ -1475,22 +1482,107 @@ Perangkat Nagari
     <div id="chart-arus-kas"></div>
 </section>
 
-<section id="umkm" class="section">
-  <h2>Data UMKM Nagari Sundata Utara</h2>
-  <p>Data UMKM terintegrasi dengan Excel</p>
+<section id="umkm">
 
-  <table border="1" width="100%" id="umkmTable">
-    <thead>
-      <tr>
-        <th>No</th>
-        <th>Nama Usaha</th>
-        <th>Jenis Usaha</th>
-        <th>Jam Operasional</th>
-        <th>Alamat</th>  
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
+  <div class="judul-sop">
+    TABEL DATA UMKM NAGARI SUNDATA UTARA
+  </div>
+
+  <div class="table-wrapper">
+    <table class="sop-table">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Nama UMKM</th>
+          <th>Jenis UMKM</th>
+          <th>Jam Operasional</th>
+          <th>Alamat</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Bengkel Las Jasa Karya</td>
+          <td>Bengkel Las</td>
+          <td>08.00 – 17.00</td>
+          <td style="text-align:center;">
+            <a href="https://maps.app.goo.gl/gsDHcoDYHk6b68tcA?g_st=iw"
+            target="_blank"
+            class="btn-maps">
+            Kunjungi
+        </a>
+    </td>
+</tr>
+
+<tr>
+          <td>2</td>
+          <td>Laundry Aiqunis (Bu Ernis)</td>
+          <td>Laundry</td>
+          <td>09.00 – 21.00</td>
+          <td style="text-align:center;">
+            <a href="https://maps.app.goo.gl/bT3YNH3GpNNG5GDg9?g_st=iw"
+            target="_blank"
+            class="btn-maps">
+            Kunjungi
+        </a>
+    </td>
+</tr>
+
+<tr>
+          <td>3</td>
+          <td>Kedai Jihan</td>
+          <td>Sarapan </td>
+          <td>08.00 – 22.00</td>
+          <td style="text-align:center;">
+            <a href="https://maps.app.goo.gl/HPUu8zyq5yBf7rCv9?g_st=ic"
+            target="_blank"
+            class="btn-maps">
+            Kunjungi
+        </a>
+    </td>
+</tr>
+
+<tr>
+          <td>4</td>
+          <td>Bian Cell</td>
+          <td>Konter Kartu </td>
+          <td>08.00 – 18.00</td>
+          <td style="text-align:center;">
+            <a href="https://maps.app.goo.gl/4uh4DdRqnj36JsiFA?g_st=ic"
+            target="_blank"
+            class="btn-maps">
+            Kunjungi
+        </a>
+    </td>
+</tr>
+
+<tr>
+          <td>5</td>
+          <td>Warung Marwa</td>
+          <td>Restoran Indonesia </td>
+          <td>09.30 – 21.00</td>
+          <td style="text-align:center;">
+            <a href="https://maps.app.goo.gl/dk5R5pAyitMjASvM9?g_st=ic"
+            target="_blank"
+            class="btn-maps">
+            Kunjungi
+        </a>
+    </td>
+</tr>
+
+<tr>
+          <td>6</td>
+          <td>Kedai Kopi dan Warung Ajo</td>
+          <td>Kedai Kopi dan Warung</td>
+          <td>05.00 – 24.00</td>
+          <td style="text-align:center;">
+            <a href="https://maps.app.goo.gl/shd9tNyVeoDWaj3K9?g_st=ic"
+            target="_blank"
+            class="btn-maps">
+            Kunjungi
+        </a>
+    </td>
+</tr>
 </section>
 
 
@@ -1558,10 +1650,6 @@ document.querySelectorAll(".sidebar a").forEach(link => {
 
 
 </div>
-
-<footer>
-    <p>&copy; 2026 Pemerintah Sundata Utara</p>
-</footer>
 
 <script>
 function toggleMenu() {
@@ -1764,53 +1852,18 @@ fetch("https://docs.google.com/spreadsheets/d/1tGGAzZJBSi_k4fO3gLZsjchK1bGC2eHAY
 </script>
 
 <script>
-const UMKM_SHEET_URL =
-"https://docs.google.com/spreadsheets/d/1lo_QQr2i2q2zL0-qniSwJgADEoEBGDgWmvh-arQZSTM/gviz/tq?gid=1522309379&headers=1&tqx=out:json";
+function filterTable() {
+  const input = document.getElementById("searchInput");
+  const filter = input.value.toLowerCase();
+  const rows = document.querySelectorAll("#tabelUMKM tbody tr");
 
-async function loadUMKM() {
-  const tbody = document.getElementById("umkm-body");
-  tbody.innerHTML = "<tr><td colspan='5'>Memuat data UMKM...</td></tr>";
-
-  try {
-    const res = await fetch(UMKM_SHEET_URL);
-    const text = await res.text();
-    const json = JSON.parse(text.substring(47).slice(0, -2));
-    const rows = json.table.rows;
-
-    tbody.innerHTML = "";
-
-    if (!rows.length) {
-      tbody.innerHTML = "<tr><td colspan='5'>Data UMKM kosong</td></tr>";
-      return;
-    }
-
-    rows.forEach((r, i) => {
-      tbody.innerHTML += `
-        <tr>
-          <td>${i + 1}</td>
-          <td>${r.c[1]?.v || "-"}</td>
-          <td>${r.c[2]?.v || "-"}</td>
-          <td>${r.c[3]?.v || "-"}</td>
-          <td>${r.c[4]?.v || "-"}</td>
-        </tr>
-      `;
-    });
-
-  } catch (err) {
-    console.error(err);
-    tbody.innerHTML =
-      "<tr><td colspan='5'>Gagal memuat data UMKM</td></tr>";
-  }
+  rows.forEach(row => {
+    const text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
 }
-
-document.addEventListener("DOMContentLoaded", loadUMKM);
 </script>
-
-
-
-
-
-
 
 </body>
 </html>
+
