@@ -807,6 +807,37 @@ async function loadUMKM() {
 document.addEventListener("DOMContentLoaded", loadUMKM);
 </script>
 
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+
+<script>
+async function loadUMKM() {
+  const response = await fetch("DATA_UMKM.xlsx");
+  const data = await response.arrayBuffer();
+
+  const workbook = XLSX.read(data, { type: "array" });
+  const sheet = workbook.Sheets[workbook.SheetNames[0]];
+  const rows = XLSX.utils.sheet_to_json(sheet);
+
+  const tbody = document.querySelector("#umkmTable tbody");
+  tbody.innerHTML = "";
+
+  rows.forEach(row => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${row.No || ""}</td>
+      <td>${row["Nama UMKM"] || ""}</td>
+      <td>${row.Pemilik || ""}</td>
+      <td>${row["Jenis Usaha"] || ""}</td>
+      <td>${row.Alamat || ""}</td>
+      <td>${row.Timestamp || ""}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", loadUMKM);
+</script>
+
 
 <body>
 
@@ -1446,28 +1477,23 @@ Perangkat Nagari
     <div id="chart-arus-kas"></div>
 </section>
 
-<section id="umkm" class="section-umkm">
-    <div class="umkm-card">
-        <h2>Data UMKM Nagari Sundata Utara</h2>
-        <p>Data UMKM terintegrasi dengan Excel</p>
+<section id="umkm" class="section">
+  <h2>Data UMKM Nagari Sundata Utara</h2>
+  <p>Data UMKM terintegrasi dengan Excel</p>
 
-        <div class="table-wrapper">
-            <table class="table-umkm">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Nama UMKM</th>
-                        <th>Jenis Usaha</th>
-                        <th>Hari dan Jam Buka</th>
-                        <th>Alamat</th>
-                    </tr>
-                </thead>
-                <tbody id="umkm-data">
-                    <!-- DATA DARI EXCEL MASUK DI SINI -->
-                </tbody>
-            </table>
-        </div>
-    </div>
+  <table border="1" width="100%" id="umkmTable">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Nama UMKM</th>
+        <th>Pemilik</th>
+        <th>Jenis Usaha</th>
+        <th>Alamat</th>
+        
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
 </section>
 
 
