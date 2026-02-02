@@ -807,7 +807,6 @@ async function loadUMKM() {
 document.addEventListener("DOMContentLoaded", loadUMKM);
 </script>
 
-<script src="DATA_UMKM.xlsx"></script>
 
 <script>
 async function loadUMKM() {
@@ -837,7 +836,6 @@ async function loadUMKM() {
 
 document.addEventListener("DOMContentLoaded", loadUMKM);
 </script>
-
 
 <body>
 
@@ -1485,11 +1483,10 @@ Perangkat Nagari
     <thead>
       <tr>
         <th>No</th>
-        <th>Nama UMKM</th>
-        <th>Pemilik</th>
+        <th>Nama Usaha</th>
         <th>Jenis Usaha</th>
-        <th>Alamat</th>
-        
+        <th>Jam Operasional</th>
+        <th>Alamat</th>  
       </tr>
     </thead>
     <tbody></tbody>
@@ -1765,6 +1762,53 @@ fetch("https://docs.google.com/spreadsheets/d/1tGGAzZJBSi_k4fO3gLZsjchK1bGC2eHAY
         console.error("Gagal memuat data UMKM", err);
     });
 </script>
+
+<script>
+const UMKM_SHEET_URL =
+"https://docs.google.com/spreadsheets/d/1lo_QQr2i2q2zL0-qniSwJgADEoEBGDgWmvh-arQZSTM/gviz/tq?gid=1522309379&headers=1&tqx=out:json";
+
+async function loadUMKM() {
+  const tbody = document.getElementById("umkm-body");
+  tbody.innerHTML = "<tr><td colspan='5'>Memuat data UMKM...</td></tr>";
+
+  try {
+    const res = await fetch(UMKM_SHEET_URL);
+    const text = await res.text();
+    const json = JSON.parse(text.substring(47).slice(0, -2));
+    const rows = json.table.rows;
+
+    tbody.innerHTML = "";
+
+    if (!rows.length) {
+      tbody.innerHTML = "<tr><td colspan='5'>Data UMKM kosong</td></tr>";
+      return;
+    }
+
+    rows.forEach((r, i) => {
+      tbody.innerHTML += `
+        <tr>
+          <td>${i + 1}</td>
+          <td>${r.c[1]?.v || "-"}</td>
+          <td>${r.c[2]?.v || "-"}</td>
+          <td>${r.c[3]?.v || "-"}</td>
+          <td>${r.c[4]?.v || "-"}</td>
+        </tr>
+      `;
+    });
+
+  } catch (err) {
+    console.error(err);
+    tbody.innerHTML =
+      "<tr><td colspan='5'>Gagal memuat data UMKM</td></tr>";
+  }
+}
+
+document.addEventListener("DOMContentLoaded", loadUMKM);
+</script>
+
+
+
+
 
 
 
